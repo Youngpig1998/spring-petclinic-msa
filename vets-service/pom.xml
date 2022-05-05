@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.spring2go.samples.petclinic.vets</groupId>
+	<groupId>com.youngpig.samples.petclinic.vets</groupId>
 	<artifactId>spring-petclinic-vets-service</artifactId>
 	<packaging>jar</packaging>
-	<description>Spring2Go PetClinic Vets Service</description>
+	<description>YoungPig PetClinic Vets Service</description>
 
 	<parent>
 		<groupId>com.youngpig.samples</groupId>
