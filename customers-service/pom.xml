@@ -9,7 +9,7 @@
 	<description>Spring2Go PetClinic Customers Service</description>
 
 	<parent>
-		<groupId>com.spring2go.samples</groupId>
+		<groupId>com.youngpig.samples</groupId>
 		<artifactId>spring-petclinic-msa</artifactId>
 		<version>1.0.0.RELEASE</version>
 	</parent>
