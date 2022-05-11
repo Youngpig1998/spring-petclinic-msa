@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  serviceName: "mysql"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql
+        annotations:
+          volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 10Gi
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      serviceAccount: nfs-provisioner
+      containers:
+        - image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: petclinic
+            - name: MYSQL_DATABASE
+              value: petclinic
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql
