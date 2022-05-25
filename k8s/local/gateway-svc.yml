@@ -18,8 +18,10 @@ spec:
           resources:
             requests:
               memory: "128Mi"
+              cpu: "200m"
             limits:
               memory: "512Mi"
+              cpu: "500m"
           env:
             - name: JAVA_OPTS
               value: "-XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=80.0 -XX:+HeapDumpOnOutOfMemoryError"
