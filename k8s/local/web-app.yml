@@ -17,11 +17,11 @@ spec:
           image: youngpig/spring-petclinic-web-app:1.0.0.RELEASE
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "200m"
-            limits:
               memory: "512Mi"
-              cpu: "500m"
+              cpu: "0.5"
+            limits:
+              memory: "1024Mi"
+              cpu: "1"
           env:
             - name: JAVA_OPTS
               value: "-XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=80.0 -XX:+HeapDumpOnOutOfMemoryError"
