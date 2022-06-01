@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: nginx-test
+  name: nginx-test
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      io.kompose.service: nginx-test
+  template:
+    metadata:
+      labels:
+        io.kompose.service: nginx-test
+    spec:
+      nodeSelector:
+        app: nginx-test
+      containers:
+      - image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        name: nginx-test
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/nginx.conf
+          name: nginx-config
+          subPath: nginx.conf
+      hostNetwork: true
+      #dnsPolicy: ClusterFirstWithHostNet
+      restartPolicy: Always
+      # volumes:
+      # - name: varconfig
+      #   emptyDir: {}
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-cm
+          items:
+          - key: nginx.conf
+            path: nginx.conf
+
+---
+
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: nginx-test
+#spec:
+#  ports:
+#    - port: 8888
+#      protocol: TCP
+#      targetPort: 8888
+#      nodePort: 31088
+#  selector:
+#    io.kompose.service: nginx-test
+#  type: NodePort
+
+        
