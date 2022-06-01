@@ -54,17 +54,18 @@ spec:
       - apiVersion: v1
         kind: Service
         metadata:
+          name: gateway
           labels:
             svc: gateway
-          name: gateway
         spec:
-          ports:
-          - name: http
-            port: 8080
-            targetPort: 8080
           selector:
             app: gateway
-          type: ClusterIP
+          ports:
+            - name: http
+              port: 8080
+              targetPort: 8080
+              nodePort: 31080
+          type: NodePort
     type: k8s-objects
   policies:
   - name: topology-default
