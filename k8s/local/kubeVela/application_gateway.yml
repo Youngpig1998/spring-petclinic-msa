@@ -1,11 +1,11 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: petclinic_gateway
+  name: petclinic-gateway
   namespace: default
 spec:
   components:
-  - name: petclinic_gateway
+  - name: petclinic-gateway
     properties:
       objects:
       - apiVersion: apps/v1

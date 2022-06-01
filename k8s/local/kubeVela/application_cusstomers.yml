@@ -1,11 +1,11 @@
 apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
-  name: petclinic_customers
+  name: petclinic-customers
   namespace: default
 spec:
   components:
-  - name: petclinic_customers
+  - name: petclinic-customers
     properties:
       objects:
       - apiVersion: apps/v1
