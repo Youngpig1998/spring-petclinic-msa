@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    svc: gateway
+  name: petclinic-gateway
+spec:
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      scheme: http
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      svc: gateway
+
+
